@@ -1,0 +1,48 @@
+class Board:
+    def __init__(self,y,x):
+        self.map = [ ['o'] * x for i in range(y) ]
+        print(map)
+    def update_position(self, old_position, new_position, character):
+        if old_position == new_position:
+            y = old_position[0]
+            x = old_position[1]
+            self.map[y][x] = character.tag
+            return True
+        if not self.collision(old_position, new_position):
+            y = old_position[0]
+            x = old_position[1]
+            self.map[y][x] = 'o'
+            y = new_position[0]
+            x = new_position[1]
+            self.map[y][x] = character.tag
+            return True
+        return False
+    def collision(self, old, new):
+        print('old')
+        print(old)
+        print('new')
+        print(new)
+        # only one dir at a time
+
+        y = new[0] - old[0]
+        x = new[1] - old[1]
+
+        increment = -1
+        if new[1] > old[1]:
+            increment = 1
+        if new[0] > old[0]:
+            increment = 1
+        for y in range(old[0],new[0]+1, increment):
+            for x in range(old[1],new[1]+1, increment):
+                print("%s, %s" %(y, x))
+                if self.map[y][x] != 'o':
+                    return True
+        return False
+
+
+# board = [
+#         ['o','o','o','o'],
+#         ['o','o','o','o'],
+#         ['o','o','o','o'],
+#         ['o','o','o','o']
+#       ]

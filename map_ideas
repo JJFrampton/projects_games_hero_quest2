@@ -1,0 +1,36 @@
+# map ideas
+
+
+chars to use:
+,-------
+|
+| ,----,
+| |    |
+| |    |
+|      |
+| ,----'
+| | ,-----,
+| | |     |
+| '-'     |
+|         |
+| ,-,     |
+| | |     |
+| | |     |
+| | |     |
+| | '-----'
+|
+
+
+Could create new maps with diagonals
+
+  ,----,
+  |    |
+ /     |
+/      |
+| ,----'
+| \
+ \ \
+  \ \
+
+
+could also use some gml logic for procedurally generated levels
