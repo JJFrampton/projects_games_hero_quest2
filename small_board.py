@@ -4,9 +4,9 @@ from board.tiles.wall import Wall
 from board.tiles.tile import Tile
 from characters.players.elf import Elf
 
-m = Board()
+board = Board()
 
-p1 = Elf('yoshida', [1,1], m)
+p1 = Elf('yoshida', [1,1], board)
 
 # e = Empty('o')
 # map = []
