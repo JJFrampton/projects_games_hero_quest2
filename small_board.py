@@ -6,7 +6,8 @@ from characters.players.elf import Elf
 
 board = Board()
 
-p1 = Elf('yoshida', [1,1], board)
+p1 = Elf('yoshida', [2,3], board)
+p2 = Elf('dayoshi', [3,6], board)
 
 # e = Empty('o')
 # map = []
