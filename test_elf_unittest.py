@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import unittest
-from Characters.Players.Elf import Elf
-from Resources.Board import Board
+from characters.players.elf import Elf
+from resources.board import Board
 
 
 class ElfInit(unittest.TestCase):
