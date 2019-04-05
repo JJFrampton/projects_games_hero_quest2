@@ -14,14 +14,19 @@ class Character:
         """This is a test of documentation.
 
             All methods should have this for documentation
+            for more examples (ie, modules, classes, etc):
+            https://www.pythonforbeginners.com/basics/python-docstrings
         """
         print("attacking", direction)
         target = self._increment(direction, self.position)
         target = self.board.m[target[0]][target[1]]
-        if type(target.content) == Empty:
+        target = target.content
+        if type(target) == Empty:
             print('target is empty')
         else:
             print('you hit something')
+            # get attack power from self
+            # get defense from target.content
     def defend(self):
         print("defending")
         # this should be automatic response to being attacked

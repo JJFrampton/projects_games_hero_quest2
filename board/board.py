@@ -85,6 +85,13 @@ class Board:
             self.m[y,x] = character.tag
             return True
         return False
+
+    # SHOULD BE USING A METHOD LIKE THIS THROUGHOUT
+    def get_tile(self, position):
+        return self.m[ position[0] ][ position[1] ]
+    def get_content(self, position):
+        return self.m[ position[0] ][ position[1] ].content
+
     def collision(self, old, amount, direction):
         # print('old')
         # print(old)
