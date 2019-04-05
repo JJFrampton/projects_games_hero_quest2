@@ -18,7 +18,7 @@ class Character:
             https://www.pythonforbeginners.com/basics/python-docstrings
         """
         print("attacking", direction)
-        target = self._increment(direction, self.position)
+        target = self._increment(direction, copy.copy(self.position))
         target = self.board.m[target[0]][target[1]]
         target = target.content
         if type(target) == Empty:
