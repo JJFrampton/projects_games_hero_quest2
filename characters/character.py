@@ -1,18 +1,35 @@
 from actions.dice import Dice
 from board.tiles.empty import Empty
 import copy
+# NOTES:
+# make a better get method for the board
+# should only have to pass the position array
+# the board object can look up the tile
 class Character:
     d = Dice()
     movement = 0
     def __init__(self, position):
         print("initializing")
-    def attack(self):
-        print("attacking")
+    def attack(self, direction):
+        """This is a test of documentation.
+
+            All methods should have this for documentation
+            for more examples (ie, modules, classes, etc):
+            https://www.pythonforbeginners.com/basics/python-docstrings
+        """
+        print("attacking", direction)
+        target = self._increment(direction, copy.copy(self.position))
+        target = self.board.m[target[0]][target[1]]
+        target = target.content
+        if type(target) == Empty:
+            print('target is empty')
+        else:
+            print('you hit something')
+            # get attack power from self
+            # get defense from target.content
     def defend(self):
         print("defending")
         # this should be automatic response to being attacked
-    def attack(self):
-        return self.d.roll('w', self.stats_attack)
     def defend(self):
         return self.d.roll('w', self.stats_defend)
     def turn_start(self):
