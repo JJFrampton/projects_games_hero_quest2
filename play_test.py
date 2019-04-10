@@ -6,5 +6,5 @@ from characters.players.elf import Elf
 
 board = Board()
 
-p1 = Elf('yoshida', [2,3], board)
+p1 = Elf('yoshida', [2,6], board)
 p2 = Elf('dayoshi', [3,6], board)

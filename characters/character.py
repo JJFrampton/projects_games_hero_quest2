@@ -6,7 +6,7 @@ import copy
 # should only have to pass the position array
 # the board object can look up the tile
 class Character:
-    d = Dice()
+    dice = Dice()
     movement = 0
     def __init__(self, position):
         print("initializing")
@@ -18,6 +18,7 @@ class Character:
             https://www.pythonforbeginners.com/basics/python-docstrings
         """
         print("attacking", direction)
+        #get target
         target = self._increment(direction, copy.copy(self.position))
         target = self.board.m[target[0]][target[1]]
         target = target.content
@@ -25,13 +26,26 @@ class Character:
             print('target is empty')
         else:
             print('you hit something')
+            target.defend(self.attack_roll())
             # get attack power from self
             # get defense from target.content
-    def defend(self):
+    def attack_roll(self):
+        return self.dice.roll('w', self.stats_attack)['white_skull']
+    def defend(self, attack_to_defend):
         print("defending")
-        # this should be automatic response to being attacked
-    def defend(self):
-        return self.d.roll('w', self.stats_defend)
+        defense = self.dice.roll('w', self.stats_defend)['shield']
+
+        print("attack : ", attack_to_defend )
+        print("defense : ", defense )
+
+        damage = attack_to_defend - defense
+        if damage > 0:
+            self.stats_body -= damage
+            if self.stats_body < 1:
+                self.die()
+    def die(self):
+        print('You died')
+        del self
     def turn_start(self):
         # set booleans
         self.movement = 0

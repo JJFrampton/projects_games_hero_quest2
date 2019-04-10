@@ -18,6 +18,9 @@ class Dice:
     def roll(self, color, amount):
         if color == 'w' or color == 'white':
             result = {}
+            result['white_skull'] = 0
+            result['black_skull'] = 0
+            result['shield'] = 0
             for i in range(amount):
                 r = self.roll_white()
                 if r in result:
