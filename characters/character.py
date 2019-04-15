@@ -22,13 +22,15 @@ class Character:
         target = self._increment(direction, copy.copy(self.position))
         target = self.board.m[target[0]][target[1]]
         target = target.content
-        if type(target) == Empty:
-            print('target is empty')
-        else:
+        if issubclass(type(target), Character):
+            print(type(target))
             print('you hit something')
             target.defend(self.attack_roll())
             # get attack power from self
             # get defense from target.content
+        else:
+            print('target is empty')
+
     def attack_roll(self):
         return self.dice.roll('w', self.stats_attack)['white_skull']
     def defend(self, attack_to_defend):
@@ -44,6 +46,8 @@ class Character:
             if self.stats_body < 1:
                 self.die()
     def die(self):
+        '''This doesnt work, need to just delete the variable
+        '''
         print('You died')
         del self
     def turn_start(self):
