@@ -44,6 +44,7 @@ class Character:
         if damage > 0:
             self.stats_body -= damage
             if self.stats_body < 1:
+                self.stats_body = 0
                 self.die()
     def die(self):
         '''This doesnt work, need to just delete the variable
