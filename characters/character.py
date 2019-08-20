@@ -59,6 +59,7 @@ class Character:
 
     # movement
     def move(self, direction, amount):
+        if self.moved: return False
         if self.movement < amount: return False
         result = self._collision_check(direction, amount)
         if result['collision']:
