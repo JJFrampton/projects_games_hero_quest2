@@ -1,0 +1,12 @@
+Steps to run and test
+
+open python3 repl
+from play_test import *
+
+this will import all objects in play_test as there own object
+conversely you can import play_test, which will do the same
+but all objects will be bound to the module 'play test'
+ie.
+play_test.p1.movement
+vs
+p1.movement
