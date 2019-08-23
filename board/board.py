@@ -85,6 +85,10 @@ class Board:
             self.m[y,x] = character.tag
             return True
         return False
+    def kill_character(self, character):
+        x, y = character.position
+        # self.m[x,y] = 'o'
+        self.m[x][y] = 'o'
 
     # SHOULD BE USING A METHOD LIKE THIS THROUGHOUT
     def get_tile(self, position):
