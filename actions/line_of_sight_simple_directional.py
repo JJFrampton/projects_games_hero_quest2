@@ -30,38 +30,32 @@ class LineOfSightSimpleDirectional:
 
     def check_up(self, current_block):
         print("check_up")
-        block_to_check = current_block.copy()
-        block_to_check[0] += 1
-        edge_to_check = current_block[0] + 0.5
-        min_bound = current_block[1] - 0.5
-        max_bound = current_block[1] + 0.5
+        block = Block(current_block)
+        edge_to_check, min_bound, max_bound = block.check_top()
         intercept = self.equation.get_x(edge_to_check)
-        print("block_to_check : " + str(block_to_check))
-        print("edge_to_check : " + str(edge_to_check))
-        print("min_bound : " + str(min_bound))
-        print("max_bound : " + str(max_bound))
-        print("intercept : " + str(intercept))
-        print("in range : " + str(intercept > min_bound and intercept < max_bound))
-        print("")
+
+        # print("edge_to_check : " + str(edge_to_check))
+        # print("min_bound : " + str(min_bound))
+        # print("max_bound : " + str(max_bound))
+        # print("intercept : " + str(intercept))
+        # print("in range : " + str(intercept > min_bound and intercept < max_bound))
+        # print("")
         if intercept > min_bound and intercept < max_bound:
             return True
         else:
             return False
     def check_right(self, current_block):
         print("check_right")
-        block_to_check = current_block.copy()
-        block_to_check[1] += 1
-        edge_to_check = current_block[1] + 0.5
-        min_bound = current_block[0] - 0.5
-        max_bound = current_block[0] + 0.5
+        block = Block(current_block)
+        edge_to_check, min_bound, max_bound = block.check_right()
         intercept = self.equation.get_y(edge_to_check)
-        print("block_to_check : " + str(block_to_check))
-        print("edge_to_check : " + str(edge_to_check))
-        print("min_bound : " + str(min_bound))
-        print("max_bound : " + str(max_bound))
-        print("intercept : " + str(intercept))
-        print("in range : " + str(intercept > min_bound and intercept < max_bound))
-        print("")
+
+        # print("edge_to_check : " + str(edge_to_check))
+        # print("min_bound : " + str(min_bound))
+        # print("max_bound : " + str(max_bound))
+        # print("intercept : " + str(intercept))
+        # print("in range : " + str(intercept > min_bound and intercept < max_bound))
+        # print("")
         if intercept > min_bound and intercept < max_bound:
             return True
         else:
@@ -70,21 +64,21 @@ class LineOfSightSimpleDirectional:
 class Block:
     # this works well
     # need to combine it with the logic above
-    def __init__(self, y, x):
-        self.position = [y, x]
+    def __init__(self, position):
+        self.position = position
         print("INIT Block")
     def check_block(self, a, b, positive=1):
         positive *= 0.5
-        position = self.position.copy()
         edge = a + positive
         min_bound = b - 0.5
         max_bound = b + 0.5
         print("\n\nedge : %s\nmin_bound : %s\nmax_bound : %s\n\n" %(edge, min_bound, max_bound))
+        return [edge, min_bound, max_bound]
     def check_top(self):
-        self.check_block(self.position[0], self.position[1])
+        return self.check_block(self.position[0], self.position[1])
     def check_bottom(self):
-        self.check_block(self.position[0], self.position[1], -1)
+        return self.check_block(self.position[0], self.position[1], -1)
     def check_right(self):
-        self.check_block(self.position[1], self.position[0])
+        return self.check_block(self.position[1], self.position[0])
     def check_left(self):
-        self.check_block(self.position[1], self.position[0], -1)
+        return self.check_block(self.position[1], self.position[0], -1)
